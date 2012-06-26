@@ -136,7 +136,7 @@ module Cinch
     # @since 2.0.0
     def start_reading_thread
       Thread.new do
-        Thread.current[:name] = "[#{@bot.nick}] Reading thread"
+        $0 = "[#{@bot.nick}] Reading thread"
         begin
           while line = @socket.readline
             rescue_exception do
@@ -166,7 +166,7 @@ module Cinch
     # @since 2.0.0
     def start_sending_thread
       Thread.new do
-        Thread.current[:name] = "[#{@bot.nick}] Sending thread"
+        $0 = "[#{@bot.nick}] Sending thread"
         rescue_exception do
           @queue.process!
         end

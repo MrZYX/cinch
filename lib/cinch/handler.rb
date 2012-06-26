@@ -61,7 +61,7 @@ module Cinch
       @bot.loggers.debug "[Stopping handler] Stopping all threads of handler #{self}: #{@thread_group.list.size} threads..."
       @thread_group.list.each do |thread|
         Thread.new do
-          $0 = "[#{@bot.nick}] Ending thread"
+          $0 = "[#{@bot.nick}] Kill handler thread for #{self}"
           @bot.loggers.debug "[Ending thread] Waiting 10 seconds for #{thread} to finish..."
           thread.join(10)
           @bot.loggers.debug "[Killing thread] Killing #{thread}"

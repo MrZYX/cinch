@@ -238,6 +238,7 @@ module Cinch
     def start(plugins = true)
       @reconnects = 0
       @plugins.register_plugins(@config.plugins.plugins) if plugins
+      $0 = "[#{self.nick}] Main thread"
 
       begin
         @user_list.each do |user|
