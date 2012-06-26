@@ -282,7 +282,9 @@ module Cinch
       if values.nil?
         # for some reason, we did not receive user information. one
         # reason is freenode throttling WHOIS
+        thread_name = Thread.current[:name]
         Thread.new do
+          $0 = thread_name
           sleep 2
           whois
         end

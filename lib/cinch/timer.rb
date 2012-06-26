@@ -104,10 +104,12 @@ module Cinch
       @shots = @orig_shots
 
       @thread_group.add Thread.new {
+        $0 = "[#{@bot.nick}] Outer timer loop for #{self}"
         while @shots > 0 do
           sleep @interval
           if threaded?
             Thread.new do
+              $0 = "[#{@bot.nick}] Inner timer loop for #{self}"
               rescue_exception do
                 @block.call
               end
